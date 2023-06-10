@@ -19,5 +19,5 @@
 }
 
 .title-text {
-  @apply bg-gradient-to-r from-blue-500 to-violet-600 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-lime-600 to-lime-400 bg-clip-text text-transparent;
 }

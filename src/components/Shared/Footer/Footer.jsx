@@ -56,8 +56,15 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-bold mb-5 text-gray-600">Subscribe</h3>
-          <p className="mb-4">
+          <h3 className="text-xl font-bold mb-5 text-gray-600">Contact Us</h3>
+          <p className="mt-4">
+            123-456-789
+            <br />
+            info@augusteescoffier.com
+            <br />
+            123 Culinary Street, Foodville, Country
+          </p>
+          <p className="my-4">
             Subscribe to our newsletter for the latest updates, culinary tips,
             and exclusive offers.
           </p>
