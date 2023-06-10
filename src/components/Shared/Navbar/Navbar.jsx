@@ -1,12 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import Logo from "./Logo";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const user = false;
+  const { user, logOut } = useAuth();
 
   const handleLogOut = () => {
-    console.log("will log user out");
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User logged out successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => console.log(error.message));
   };
 
   const navOptions = (
