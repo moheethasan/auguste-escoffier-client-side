@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-gray-100 px-2 py-5">
+      <div className="navbar bg-gradient-to-r from-lime-100 to-lime-50 px-2 py-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label
