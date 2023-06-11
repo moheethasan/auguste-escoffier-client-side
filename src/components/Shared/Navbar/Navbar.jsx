@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import Logo from "./Logo";
 import useAuth from "../../../hooks/useAuth";
@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+
+  const location = useLocation();
+  const isHomeRoute = location.pathname === "/";
 
   const handleLogOut = () => {
     logOut()
@@ -54,7 +57,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-gradient-to-r from-lime-100 to-lime-50 px-2 py-5">
+      <div
+        className={`navbar bg-lime-100 px-2 py-3 md:py-5 ${
+          isHomeRoute ? "fixed z-10 bg-opacity-30" : ""
+        }`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label
