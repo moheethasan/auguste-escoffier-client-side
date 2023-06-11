@@ -62,7 +62,7 @@ const Footer = () => {
             <br />
             info@augusteescoffier.com
             <br />
-            123 Culinary Street, Foodville, Country
+            123 Culinary Street, Foodville
           </p>
           <p className="my-4">
             Subscribe to our newsletter for the latest updates, culinary tips,
