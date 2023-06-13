@@ -11,18 +11,35 @@ const AddClass = () => {
     data.status = "pending";
     console.log(data);
 
-    fetch(`${import.meta.env.VITE_apiUrl}/classes`, {
+    const img_hosting_token = import.meta.env.VITE_ImageUpload_apiKey;
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
+    const formData = new FormData();
+    formData.append("image", data?.class_image[0]);
+
+    fetch(img_hosting_url, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
+      body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          Swal.fire("Done!", `Class added successfully`, "success");
-          reset();
+      .then((imgData) => {
+        if (imgData.success) {
+          const imgURL = imgData.data.display_url;
+          data.class_image = imgURL;
+          fetch(`${import.meta.env.VITE_apiUrl}/classes`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.acknowledged) {
+                Swal.fire("Done!", `Class added successfully`, "success");
+                reset();
+              }
+            });
         }
       });
   };
