@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../Shared/Navbar/Logo";
-import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import { MdLogout } from "react-icons/md";
+import { AiFillDollarCircle, AiFillSetting } from "react-icons/ai";
+import { GiTeacher, GiBookshelf } from "react-icons/gi";
+import { FaBookmark, FaHome, FaUsers, FaWallet } from "react-icons/fa";
+import { BiBook } from "react-icons/bi";
+
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setActive] = useState("false");
@@ -16,6 +20,11 @@ const Sidebar = () => {
     logOut();
     navigate("/");
   };
+
+  // TODO: make them dynamic
+  const isInstructor = false;
+  const isAdmin = true;
+
   return (
     <>
       <div className="bg-lime-100 text-gray-800 flex justify-between md:hidden items-center">
@@ -72,9 +81,137 @@ const Sidebar = () => {
               </p>
             </div>
           </div>
-
-          <div className="flex flex-col justify-between flex-1 mt-6">
-            <nav>{/* TODO: add nav items */}</nav>
+          <div className="flex flex-col justify-between flex-1 mt-8">
+            <nav>
+              {isAdmin ? (
+                <>
+                  <div className="h-px bg-lime-300 mx-auto"></div>
+                  <NavLink
+                    to="/dashboard/manageClasses"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <GiBookshelf className="w-5 h-5" />
+                    <span className="mx-2 font-medium">Manage Classes</span>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/manageUsers"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <FaUsers className="w-5 h-5" />
+                    <span className="mx-2 font-medium">Manage Users</span>
+                  </NavLink>
+                </>
+              ) : isInstructor ? (
+                <>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <BiBook className="w-5 h-5" />
+                    <span className="mx-2 font-medium">Add a Class</span>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <GiBookshelf className="w-5 h-5" />
+                    <span className="mx-2 font-medium">My Classes</span>
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <FaBookmark className="w-5 h-5" />
+                    <span className="mx-2 font-medium">
+                      My Selected Classes
+                    </span>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <AiFillDollarCircle className="w-5 h-5" />
+                    <span className="mx-2 font-medium">
+                      My Enrolled Classes
+                    </span>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-lime-200  text-gray-700"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    <FaWallet className="w-5 h-5" />
+                    <span className="mx-2 font-medium">Payment History</span>
+                  </NavLink>
+                </>
+              )}
+              <div className="h-px bg-lime-300 mx-auto mt-2"></div>
+              <NavLink
+                className="flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform  hover:bg-lime-200   hover:text-gray-700 text-gray-600"
+                to="/"
+              >
+                <FaHome className="w-5 h-5" />
+                <span className="mx-2 font-medium">Home</span>
+              </NavLink>
+              <NavLink
+                className="flex items-center px-4 py-2 mt-1 rounded-lg transition-colors duration-300 transform  hover:bg-lime-200   hover:text-gray-700 text-gray-600"
+                to="/instructors"
+              >
+                <GiTeacher className="w-5 h-5" />
+                <span className="mx-2 font-medium">Instructors</span>
+              </NavLink>
+              <NavLink
+                className="flex items-center px-4 py-2 mt-1 rounded-lg transition-colors duration-300 transform  hover:bg-lime-200   hover:text-gray-700 text-gray-600"
+                to="/classes"
+              >
+                <GiBookshelf className="w-5 h-5" />
+                <span className="mx-2 font-medium">Classes</span>
+              </NavLink>
+            </nav>
           </div>
         </div>
 
@@ -83,22 +220,20 @@ const Sidebar = () => {
           <NavLink
             to="/dashboard/profile"
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 mt-5 rounded-lg transition-colors duration-300 transform  hover:bg-lime-200   hover:text-gray-700 ${
+              `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                 isActive ? "bg-lime-200  text-gray-700" : "text-gray-600"
               }`
             }
           >
-            <FcSettings className="w-5 h-5" />
-
-            <span className="mx-4 font-medium">Profile</span>
+            <AiFillSetting className="w-5 h-5" />
+            <span className="mx-2 font-medium">Profile</span>
           </NavLink>
           <button
             onClick={handleLogOut}
-            className="flex w-full rounded-lg items-center px-4 py-2 mt-5 text-gray-600 hover:bg-lime-200   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full rounded-lg items-center px-4 py-2 mt-1 text-gray-600 hover:bg-lime-200   hover:text-gray-700 transition-colors duration-300 transform"
           >
-            <GrLogout className="w-5 h-5" />
-
-            <span className="mx-4 font-medium">Logout</span>
+            <MdLogout className="w-5 h-5" />
+            <span className="mx-2 font-medium">Logout</span>
           </button>
         </div>
       </div>

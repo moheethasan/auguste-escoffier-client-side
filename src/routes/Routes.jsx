@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home/Home";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Profile from "../pages/Dashboard/Profile/Profile";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
