@@ -48,16 +48,33 @@ const Register = () => {
               console.log(result.user);
               editProfile(data?.name, imgURL)
                 .then(() => {
-                  Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Registered successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                  reset();
-                  logOut();
-                  navigate("/login");
+                  const saveUser = {
+                    name: data?.name,
+                    email: data?.email,
+                    role: "student",
+                  };
+                  fetch(`${import.meta.env.VITE_apiUrl}/users`, {
+                    method: "POST",
+                    headers: {
+                      "content-type": "application/json",
+                    },
+                    body: JSON.stringify(saveUser),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => {
+                      if (data.insertedId) {
+                        Swal.fire({
+                          position: "top-end",
+                          icon: "success",
+                          title: "Registered successfully",
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
+                        reset();
+                        logOut();
+                        navigate("/login");
+                      }
+                    });
                 })
                 .catch((err) => {
                   setError(err.message);
