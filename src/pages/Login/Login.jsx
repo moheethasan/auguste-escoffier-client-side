@@ -92,7 +92,11 @@ const Login = () => {
               <span className="label-text font-semibold title-text mb-3">
                 {error}
               </span>
-              <input className="btn-primary" type="submit" value="Login" />
+              <input
+                className="btn-primary cursor-pointer"
+                type="submit"
+                value="Login"
+              />
               <label className="label flex justify-center">
                 <span className="label-text font-semibold">
                   Don&#39;t have an account?{" "}

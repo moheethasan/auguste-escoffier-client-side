@@ -47,7 +47,7 @@ const Navbar = () => {
       {user && (
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "default")}
-          to="/addToy"
+          to="/dashboard"
         >
           Dashboard
         </NavLink>

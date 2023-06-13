@@ -196,7 +196,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-2">
               <input
-                className="btn-primary mt-3"
+                className="btn-primary mt-3 cursor-pointer"
                 type="submit"
                 value="Register"
               />
