@@ -22,8 +22,8 @@ const Sidebar = () => {
   };
 
   // TODO: make them dynamic
-  const isInstructor = false;
-  const isAdmin = true;
+  const isInstructor = true;
+  const isAdmin = false;
 
   return (
     <>
@@ -116,7 +116,7 @@ const Sidebar = () => {
               ) : isInstructor ? (
                 <>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard/addClass"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                         isActive
@@ -129,7 +129,7 @@ const Sidebar = () => {
                     <span className="mx-2 font-medium">Add a Class</span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard/myClass"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                         isActive
@@ -145,7 +145,7 @@ const Sidebar = () => {
               ) : (
                 <>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard/selectedClass"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                         isActive
@@ -160,7 +160,7 @@ const Sidebar = () => {
                     </span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard/enrolledClass"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                         isActive
@@ -175,7 +175,7 @@ const Sidebar = () => {
                     </span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/profile"
+                    to="/dashboard/paymentHistory"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-2 rounded-lg transition-colors duration-300 transform hover:bg-lime-200   hover:text-gray-700 ${
                         isActive
