@@ -10,6 +10,8 @@ import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClass from "../pages/Dashboard/MyClass/MyClass";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import UpdateClass from "../pages/Dashboard/MyClass/UpdateClass";
+import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +50,20 @@ const router = createBrowserRouter([
         element: <MyClass></MyClass>,
       },
       {
+        path: "updateClass/:id",
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_apiUrl}/classes/${params.id}`),
+      },
+      {
         path: "manageClasses",
         element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "feedback/:id",
+        element: <Feedback></Feedback>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_apiUrl}/classes/${params.id}`),
       },
       {
         path: "manageUsers",

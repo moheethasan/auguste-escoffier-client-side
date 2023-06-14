@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
@@ -20,7 +21,7 @@ const ManageClasses = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) {
+        if (data.modifiedCount > 0) {
           refetch();
           Swal.fire("Done!", `Status has been updated`, "success");
           refetch();
@@ -28,11 +29,10 @@ const ManageClasses = () => {
       });
   };
 
-  console.log(classes);
   return (
     <div className="w-full mx-auto my-20">
       <h2 className="text-lg lg:text-2xl font-semibold uppercase mb-5 text-center">
-        Total Classes: {classes.length}
+        Total Classes: {classes?.length}
       </h2>
       <div className="overflow-x-auto">
         <table className="table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
@@ -60,8 +60,8 @@ const ManageClasses = () => {
                     </div>
                     <div>
                       <div className="font-bold">
-                        {cls?.class_name.length > 20
-                          ? `${cls?.class_name.slice(0, 20)}...`
+                        {cls?.class_name?.length > 20
+                          ? `${cls?.class_name?.slice(0, 20)}...`
                           : cls?.class_name}
                       </div>
                     </div>
@@ -97,9 +97,12 @@ const ManageClasses = () => {
                   >
                     Decline
                   </button>
-                  <button className="btn btn-xs text-white bg-lime-500 border-0 hover:bg-lime-600 btn-block">
+                  <Link
+                    to={`/dashboard/feedback/${cls?._id}`}
+                    className="btn btn-xs text-white bg-lime-500 border-0 hover:bg-lime-600 btn-block"
+                  >
                     Send Feedback
-                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}

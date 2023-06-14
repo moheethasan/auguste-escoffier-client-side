@@ -1,27 +1,18 @@
-import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Shared/Loader/Loader";
 import { BiEdit } from "react-icons/bi";
-import UpdateModal from "../../../components/Modal/UpdateClassModal";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const MyClass = () => {
-  const [modal, setModal] = useState(false);
   const { user, loading } = useAuth();
 
-  const { data: classes = [], refetch } = useQuery(
-    ["classes", user],
-    async () => {
-      const res = await fetch(
-        `${import.meta.env.VITE_apiUrl}/classes?email=${user?.email}`
-      );
-      return res.json();
-    }
-  );
-
-  const closeModal = () => {
-    setModal(false);
-  };
+  const { data: classes = [] } = useQuery(["classes", user], async () => {
+    const res = await fetch(
+      `${import.meta.env.VITE_apiUrl}/classes?email=${user?.email}`
+    );
+    return res.json();
+  });
 
   if (loading) {
     return <Loader></Loader>;
@@ -84,20 +75,12 @@ const MyClass = () => {
                 <td>{cls?.enrolled_student}</td>
                 <td>{cls?.feedback}</td>
                 <td>
-                  <button
-                    onClick={() => setModal(true)}
+                  <Link
+                    to={`/dashboard/updateClass/${cls?._id}`}
                     className="btn bg-lime-300 border-0 hover:bg-lime-400"
                   >
                     <BiEdit className="text-xl" />
-                  </button>
-                  <UpdateModal
-                    isOpen={modal}
-                    cls={cls}
-                    closeModal={closeModal}
-                    user={user}
-                    loading={loading}
-                    refetch={refetch}
-                  />
+                  </Link>
                 </td>
               </tr>
             ))}
