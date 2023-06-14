@@ -9,9 +9,6 @@ const ManageUsers = () => {
 
   const handleRoleUpdate = (user, role) => {
     const updatedUser = {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
       role: role,
     };
 
@@ -63,14 +60,14 @@ const ManageUsers = () => {
                   <button
                     disabled={user.role === "instructor" ? true : false}
                     onClick={() => handleRoleUpdate(user, "instructor")}
-                    className="btn btn-accent"
+                    className="btn btn-accent text-white bg-lime-500 border-0 hover:bg-lime-600"
                   >
                     Make Instructor
                   </button>
                   <button
                     disabled={user.role === "admin" ? true : false}
                     onClick={() => handleRoleUpdate(user, "admin")}
-                    className="btn btn-accent"
+                    className="btn btn-accent text-white bg-lime-500 border-0 hover:bg-lime-600"
                   >
                     Make Admin
                   </button>
