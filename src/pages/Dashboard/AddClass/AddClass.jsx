@@ -2,14 +2,16 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Shared/Loader/Loader";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddClass = () => {
   const { user, loading } = useAuth();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     data.status = "pending";
-    console.log(data);
+    data.enrolled_student = 0;
 
     const img_hosting_token = import.meta.env.VITE_ImageUpload_apiKey;
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -38,6 +40,7 @@ const AddClass = () => {
               if (data.acknowledged) {
                 Swal.fire("Done!", `Class added successfully`, "success");
                 reset();
+                navigate("/dashboard/myClass");
               }
             });
         }
@@ -55,7 +58,7 @@ const AddClass = () => {
         </h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="shadow-2xl bg-base-100 p-14 rounded-lg w-4/5 mx-auto"
+          className="shadow-2xl bg-base-100 p-14 rounded-lg lg:w-4/5 2xl:w-3/5 mx-auto"
         >
           <div className="w-full form-control">
             <label className="label">
@@ -80,7 +83,7 @@ const AddClass = () => {
               className="file-input file-input-bordered file-input-success  border-2"
             />
           </div>
-          <div className="flex gap-5">
+          <div className="lg:flex gap-5">
             <div className="w-full form-control">
               <label className="label">
                 <span className="font-semibold label-text">
