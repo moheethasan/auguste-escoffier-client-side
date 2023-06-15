@@ -12,6 +12,8 @@ import MyClass from "../pages/Dashboard/MyClass/MyClass";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import UpdateClass from "../pages/Dashboard/MyClass/UpdateClass";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
+import Instructors from "../pages/Home/Instructors/Instructors";
+import Classes from "../pages/Home/Classes/Classes";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "instructors",
+        element: <Instructors></Instructors>,
+      },
+      {
+        path: "classes",
+        element: <Classes></Classes>,
       },
       {
         path: "login",

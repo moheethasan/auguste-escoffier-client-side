@@ -41,7 +41,6 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then((imgData) => {
-        console.log(imgData);
         if (imgData.success) {
           const imgURL = imgData.data.display_url;
           signUp(data?.email, data?.password)
@@ -52,6 +51,7 @@ const Register = () => {
                   const saveUser = {
                     name: data?.name,
                     email: data?.email,
+                    image: imgURL,
                     role: "student",
                   };
                   fetch(`${import.meta.env.VITE_apiUrl}/users`, {
