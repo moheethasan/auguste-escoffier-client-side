@@ -11,7 +11,7 @@ const PopularClassCard = ({ classs }) => {
     available_seats,
   } = classs || {};
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden my-10 flex flex-col">
+    <div className="bg-white shadow-lg hover:shadow-2xl rounded-lg overflow-hidden flex flex-col">
       <div className="px-4 py-2">
         <h1 className="text-2xl font-bold uppercase">
           {class_name}{" "}
