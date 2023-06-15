@@ -16,14 +16,12 @@ const ClassesCard = ({ classs }) => {
         />
       </figure>
       <div className="flex flex-col p-7 gap-1">
-        <h2 className="flex items-center gap-1 text-2xl font-bold">
-          {class_name}
-        </h2>
-        <p className="flex items-center gap-1 font-semibold">
+        <h2 className="text-2xl font-bold">{class_name}</h2>
+        <p className="font-semibold mb-5">
           <span>Instructor: </span>
           {instructor_name}
         </p>
-        <div className="flex justify-between items-center mt-3">
+        <div className="flex justify-between items-center mt-auto">
           <div className="flex flex-col gap-1">
             <p>Price: ${price}</p>
             <p>Available Seats: {available_seats}</p>

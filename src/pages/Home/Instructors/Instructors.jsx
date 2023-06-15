@@ -1,11 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import InstructorCard from "../../../components/Card/InstructorCard";
+import Loader from "../../../components/Shared/Loader/Loader";
 
 const Instructors = () => {
-  const { data: instructors = [] } = useQuery(["instructors"], async () => {
-    const res = await fetch(`${import.meta.env.VITE_apiUrl}/instructors`);
-    return res.json();
-  });
+  const { data: instructors = [], isLoading } = useQuery(
+    ["instructors"],
+    async () => {
+      const res = await fetch(`${import.meta.env.VITE_apiUrl}/instructors`);
+      return res.json();
+    }
+  );
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="container mx-auto py-24 px-4">

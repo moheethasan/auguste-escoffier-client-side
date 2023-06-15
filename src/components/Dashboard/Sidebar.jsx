@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   // TODO: make them dynamic
   const isInstructor = false;
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <>

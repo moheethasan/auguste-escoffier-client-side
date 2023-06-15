@@ -13,6 +13,9 @@ const AddClass = () => {
     data.status = "pending";
     data.enrolled_student = 0;
 
+    data.price = parseFloat(data.price);
+    data.available_seats = parseInt(data.available_seats);
+
     const img_hosting_token = import.meta.env.VITE_ImageUpload_apiKey;
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
@@ -140,7 +143,7 @@ const AddClass = () => {
             />
           </div>
           <input
-            className="btn-primary btn-block mt-6"
+            className="btn-primary btn-block mt-6 cursor-pointer"
             type="submit"
             value="Add Class"
           />

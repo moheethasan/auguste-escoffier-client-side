@@ -16,7 +16,7 @@ const InstructorCard = ({ instructor }) => {
         <p className="flex items-center gap-1 font-semibold">
           <MdMailOutline className="text-xl text-lime-500" /> {email}
         </p>
-        <div className="card-actions justify-center">
+        <div className="card-actions justify-center mt-auto">
           <button className="flex items-center gap-1 px-5 py-2 text-sm md:text-base rounded-lg bg-white border border-lime-500 text-lime-500 hover:bg-gradient-to-r from-lime-500 to-lime-300 hover:text-white hover:border-lime-100 mt-10">
             See Classes <FaArrowRight />
           </button>
