@@ -5,7 +5,7 @@ const InstructorCard = ({ instructor }) => {
   const { name, email, image } = instructor || {};
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl hover:shadow-2xl">
       <figure>
         <img src={image} alt="Instructor" />
       </figure>

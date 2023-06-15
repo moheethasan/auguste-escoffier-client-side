@@ -17,7 +17,7 @@ const Classes = () => {
       <h1 className="text-center text-4xl md:text-5xl font-bold pb-3">
         <span className="title-text">Approved Classes</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10 xl:gap-14 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10 xl:gap-14 mt-24">
         {classes?.map((classs) => (
           <ClassesCard key={classs._id} classs={classs}></ClassesCard>
         ))}
