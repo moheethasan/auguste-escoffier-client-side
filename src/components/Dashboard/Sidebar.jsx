@@ -7,6 +7,8 @@ import { AiFillDollarCircle, AiFillSetting } from "react-icons/ai";
 import { GiTeacher, GiBookshelf } from "react-icons/gi";
 import { FaBookmark, FaHome, FaUsers, FaWallet } from "react-icons/fa";
 import { BiBook } from "react-icons/bi";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -21,9 +23,10 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  // TODO: make them dynamic
-  const isInstructor = false;
-  const isAdmin = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
+  console.log(isAdmin, isInstructor);
 
   return (
     <>

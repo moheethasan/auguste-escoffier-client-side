@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const ClassesCard = ({ classs }) => {
   const { class_name, instructor_name, class_image, available_seats, price } =
@@ -9,9 +11,10 @@ const ClassesCard = ({ classs }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  // TODO: dynamic
-  const isInstructor = false;
-  const isAdmin = false;
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const handleSelect = () => {
     if (!user) {
       return Swal.fire({
@@ -54,7 +57,6 @@ const ClassesCard = ({ classs }) => {
       .then((data) => {
         if (data.acknowledged) {
           Swal.fire("Done!", `Class selected successfully`, "success");
-          // TODO: navigate
         }
       })
       .catch((err) => {

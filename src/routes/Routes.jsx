@@ -14,6 +14,7 @@ import UpdateClass from "../pages/Dashboard/MyClass/UpdateClass";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 import Instructors from "../pages/Home/Instructors/Instructors";
 import Classes from "../pages/Home/Classes/Classes";
+import MySelectedClass from "../pages/Dashboard/MySelectedClass/MySelectedClass";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
         element: <Profile></Profile>,
       },
       {
+        path: "selectedClass",
+        element: <MySelectedClass></MySelectedClass>,
+      },
+      // instructors route
+      {
         path: "addClass",
         element: <AddClass></AddClass>,
       },
@@ -65,6 +71,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_apiUrl}/classes/${params.id}`),
       },
+      // admins route
       {
         path: "manageClasses",
         element: <ManageClasses></ManageClasses>,
