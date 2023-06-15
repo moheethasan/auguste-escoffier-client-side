@@ -1,27 +1,21 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UpdateClass = () => {
+  const [axiosSecure] = useAxiosSecure();
   const cls = useLoaderData();
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch(`${import.meta.env.VITE_apiUrl}/classes/${cls._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          Swal.fire("Done!", `Class updated successfully`, "success");
-          navigate("/dashboard/myClass");
-        }
-      });
+    axiosSecure.patch(`/classes/${cls._id}`, data).then((data) => {
+      if (data.data.modifiedCount > 0) {
+        Swal.fire("Done!", `Class updated successfully`, "success");
+        navigate("/dashboard/myClass");
+      }
+    });
   };
   return (
     <div className="bg-lime-100 p-10">

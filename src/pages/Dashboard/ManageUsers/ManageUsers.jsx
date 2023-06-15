@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch(`${import.meta.env.VITE_apiUrl}/users`);
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
 
   const handleRoleUpdate = (user, role) => {
@@ -12,24 +14,16 @@ const ManageUsers = () => {
       role: role,
     };
 
-    fetch(`${import.meta.env.VITE_apiUrl}/users/role/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire(
-            "Done!",
-            `The role of ${user.name} has been updated`,
-            "success"
-          );
-        }
-      });
+    axiosSecure.patch(`/users/role/${user._id}`, updatedUser).then((data) => {
+      if (data.modifiedCount > 0) {
+        refetch();
+        Swal.fire(
+          "Done!",
+          `The role of ${user.name} has been updated`,
+          "success"
+        );
+      }
+    });
   };
 
   return (

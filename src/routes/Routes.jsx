@@ -15,6 +15,9 @@ import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 import Instructors from "../pages/Home/Instructors/Instructors";
 import Classes from "../pages/Home/Classes/Classes";
 import MySelectedClass from "../pages/Dashboard/MySelectedClass/MySelectedClass";
+import InstructorRoute from "./InstructorRoute";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -46,45 +49,81 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "selectedClass",
-        element: <MySelectedClass></MySelectedClass>,
+        element: (
+          <PrivateRoute>
+            <MySelectedClass></MySelectedClass>
+          </PrivateRoute>
+        ),
       },
       // instructors route
       {
         path: "addClass",
-        element: <AddClass></AddClass>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "myClass",
-        element: <MyClass></MyClass>,
+        element: (
+          <InstructorRoute>
+            <MyClass></MyClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "updateClass/:id",
-        element: <UpdateClass></UpdateClass>,
+        element: (
+          <InstructorRoute>
+            <UpdateClass></UpdateClass>
+          </InstructorRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_apiUrl}/classes/${params.id}`),
       },
       // admins route
       {
         path: "manageClasses",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "feedback/:id",
-        element: <Feedback></Feedback>,
+        element: (
+          <AdminRoute>
+            <Feedback></Feedback>
+          </AdminRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_apiUrl}/classes/${params.id}`),
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
     ],
   },

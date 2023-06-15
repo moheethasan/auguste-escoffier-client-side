@@ -3,8 +3,10 @@ import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Shared/Loader/Loader";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddClass = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useAuth();
   const navigate = useNavigate();
 
@@ -31,21 +33,13 @@ const AddClass = () => {
         if (imgData.success) {
           const imgURL = imgData.data.display_url;
           data.class_image = imgURL;
-          fetch(`${import.meta.env.VITE_apiUrl}/classes`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.acknowledged) {
-                Swal.fire("Done!", `Class added successfully`, "success");
-                reset();
-                navigate("/dashboard/myClass");
-              }
-            });
+          axiosSecure.post("/classes", data).then((data) => {
+            if (data.data.acknowledged) {
+              Swal.fire("Done!", `Class added successfully`, "success");
+              reset();
+              navigate("/dashboard/myClass");
+            }
+          });
         }
       });
   };

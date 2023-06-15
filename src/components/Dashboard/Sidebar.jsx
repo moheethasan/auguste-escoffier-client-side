@@ -26,8 +26,6 @@ const Sidebar = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
-  console.log(isAdmin, isInstructor);
-
   return (
     <>
       <div className="bg-lime-100 text-gray-800 flex justify-between md:hidden items-center">

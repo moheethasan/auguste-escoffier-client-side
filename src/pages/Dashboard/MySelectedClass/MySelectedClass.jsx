@@ -3,16 +3,16 @@ import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Shared/Loader/Loader";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MySelectedClass = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useAuth();
   const { data: classes = [], refetch } = useQuery(
     ["classes", user],
     async () => {
-      const res = await fetch(
-        `${import.meta.env.VITE_apiUrl}/enrolls?email=${user?.email}`
-      );
-      return res.json();
+      const res = await axiosSecure.get(`/enrolls?email=${user?.email}`);
+      return res.data;
     }
   );
 
@@ -27,16 +27,12 @@ const MySelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_apiUrl}/enrolls/${cls._id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire("Deleted!", "Your class has been deleted.", "success");
-            }
-          });
+        axiosSecure.delete(`/enrolls/${cls._id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "Your class has been deleted.", "success");
+          }
+        });
       }
     });
   };
