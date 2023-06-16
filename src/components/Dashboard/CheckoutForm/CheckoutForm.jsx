@@ -18,9 +18,11 @@ const CheckoutForm = ({ price, selectedClass }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // if (price > 0) {
     axiosSecure.post("/create-payment-intent", { price }).then((data) => {
       setClientSecret(data.data.clientSecret);
     });
+    // }
   }, [price, axiosSecure]);
 
   const handleSubmit = async (event) => {

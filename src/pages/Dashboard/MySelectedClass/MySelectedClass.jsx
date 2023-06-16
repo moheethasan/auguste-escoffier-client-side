@@ -62,6 +62,7 @@ const MySelectedClass = () => {
             <tr>
               <th></th>
               <th className="text-start">Class</th>
+              <th className="text-start">Status</th>
               <th className="text-start">Instructor</th>
               <th className="text-start">Price</th>
               <th className="text-start">Action</th>
@@ -87,6 +88,7 @@ const MySelectedClass = () => {
                     </div>
                   </div>
                 </td>
+                <td>{cls?.payment_status}</td>
                 <td>
                   <h3>{cls?.instructor_name}</h3>
                 </td>
