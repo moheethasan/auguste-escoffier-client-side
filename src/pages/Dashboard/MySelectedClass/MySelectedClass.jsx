@@ -4,6 +4,7 @@ import Loader from "../../../components/Shared/Loader/Loader";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -11,7 +12,9 @@ const MySelectedClass = () => {
   const { data: classes = [], refetch } = useQuery(
     ["classes", user],
     async () => {
-      const res = await axiosSecure.get(`/enrolls?email=${user?.email}`);
+      const res = await axiosSecure.get(
+        `/enrolls/selected?email=${user?.email}`
+      );
       return res.data;
     }
   );
@@ -95,7 +98,12 @@ const MySelectedClass = () => {
                   >
                     <FaTrashAlt className="text-lg text-white" />
                   </button>
-                  <button className="btn-primary">Pay</button>
+                  <Link
+                    to={`/dashboard/paymentCheckout/${cls?._id}`}
+                    className="btn-primary"
+                  >
+                    Pay
+                  </Link>
                 </td>
               </tr>
             ))}

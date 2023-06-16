@@ -18,6 +18,8 @@ import MySelectedClass from "../pages/Dashboard/MySelectedClass/MySelectedClass"
 import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import PaymentCheckout from "../pages/Dashboard/MySelectedClass/PaymentCheckout";
+import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // students route
       {
         path: "selectedClass",
         element: (
@@ -70,6 +73,24 @@ const router = createBrowserRouter([
             <MySelectedClass></MySelectedClass>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "enrolledClass",
+        element: (
+          <PrivateRoute>
+            <MyEnrolledClass></MyEnrolledClass>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "paymentCheckout/:id",
+        element: (
+          <PrivateRoute>
+            <PaymentCheckout></PaymentCheckout>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_apiUrl}/enrolls/${params.id}`),
       },
       // instructors route
       {
