@@ -32,7 +32,7 @@ const ManageUsers = () => {
         Total Users: {users.length}
       </h2>
       <div className="overflow-x-auto">
-        <table className="table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
+        <table className="text-gray-600 table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
           <thead>
             <tr>
               <th></th>

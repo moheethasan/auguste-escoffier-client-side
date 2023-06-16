@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import Logo from "./Logo";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import MyAwesomeThemeComponent from "../../Theme";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -96,6 +97,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal gap-1 md:gap-5">{navOptions}</ul>
         </div>
         <div className="navbar-end">
+          <MyAwesomeThemeComponent></MyAwesomeThemeComponent>
           {user ? (
             <div className="flex gap-1 md:gap-3 items-center">
               <div

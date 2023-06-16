@@ -18,17 +18,17 @@ const MyEnrolledClass = () => {
   if (classes.length === 0) {
     return (
       <p className="text-error mt-10 text-lg font-semibold text-center">
-        No classes found.
+        No enrolled classes found.
       </p>
     );
   }
   return (
     <div className="w-full mx-auto my-20">
       <h2 className="text-lg lg:text-2xl font-semibold uppercase mb-5 text-center">
-        Total Classes: {classes.length}
+        Total enrolled: {classes.length}
       </h2>
       <div className="overflow-x-auto mb-5">
-        <table className="table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
+        <table className="text-gray-600 table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
           <thead>
             <tr>
               <th></th>

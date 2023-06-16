@@ -15,6 +15,7 @@ import banner4 from "../../../assets/home/banner4.jpg";
 import banner5 from "../../../assets/home/banner5.jpg";
 import banner6 from "../../../assets/home/banner6.jpg";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -46,11 +47,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
@@ -70,11 +71,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
@@ -94,11 +95,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
@@ -118,11 +119,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
@@ -142,11 +143,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
@@ -166,11 +167,11 @@ const Banner = () => {
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-5 text-white font-semibold md:w-4/5">
               Discover Affordable Culinary Arts Education for All Skill Levels
             </h3>
-            <button className="btn-primary">
+            <Link to="/classes" className="btn-primary">
               <span className="flex items-center gap-1">
                 Enroll in Our Latest Program <FaArrowRight />
               </span>
-            </button>
+            </Link>
           </div>
         </SwiperSlide>
       </Swiper>

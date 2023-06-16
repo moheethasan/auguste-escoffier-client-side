@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageClasses = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
     const res = await fetch(`${import.meta.env.VITE_apiUrl}/classes`);
     return res.json();
@@ -12,21 +14,13 @@ const ManageClasses = () => {
     const updatedClass = {
       status: status,
     };
-    fetch(`${import.meta.env.VITE_apiUrl}/classes/${cls._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedClass),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire("Done!", `Status has been updated`, "success");
-          refetch();
-        }
-      });
+    axiosSecure.patch(`/classes/${cls._id}`, updatedClass).then((data) => {
+      if (data.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire("Done!", `Status has been updated`, "success");
+        refetch();
+      }
+    });
   };
 
   return (
@@ -35,7 +29,7 @@ const ManageClasses = () => {
         Total Classes: {classes?.length}
       </h2>
       <div className="overflow-x-auto">
-        <table className="table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
+        <table className="text-gray-600 table-sm md:table-md lg:table-lg w-full bg-lime-100 mt-5 rounded-lg">
           <thead>
             <tr>
               <th></th>

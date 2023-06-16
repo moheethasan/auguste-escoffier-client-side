@@ -10,6 +10,8 @@ const UpdateClass = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
+    data.price = parseFloat(data.price);
+    data.available_seats = parseInt(data.available_seats);
     axiosSecure.patch(`/classes/${cls._id}`, data).then((data) => {
       if (data.data.modifiedCount > 0) {
         Swal.fire("Done!", `Class updated successfully`, "success");
