@@ -48,7 +48,7 @@ const Navbar = () => {
       {user && (
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "default")}
-          to="/dashboard"
+          to="/dashboard/home"
         >
           Dashboard
         </NavLink>

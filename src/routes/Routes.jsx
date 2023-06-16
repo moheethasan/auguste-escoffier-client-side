@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import PaymentCheckout from "../pages/Dashboard/MySelectedClass/PaymentCheckout";
 import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "home",
+        element: (
+          <PrivateRoute>
+            <DashboardHome></DashboardHome>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "profile",
         element: (
