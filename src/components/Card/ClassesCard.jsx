@@ -69,7 +69,7 @@ const ClassesCard = ({ classs }) => {
   return (
     <Fade duration={2000} delay={100} cascade>
       <div
-        className={`card bg-base-100 shadow-xl hover:shadow-2xl flex flex-col ${
+        className={`card bg-base-100 shadow-xl hover:shadow-2xl flex flex-col h-full ${
           available_seats === 0 && "bg-red-500"
         }`}
       >
