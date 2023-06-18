@@ -12,7 +12,7 @@ Welcome to Auguste Escoffier, the prestigious school of culinary arts. Explore o
 
 ## Packages/Technology Used
 
-Tailwind CSS, DaisyUi, React, React Router DOM, Axios, Firebase, React Hook Form, Stripe, Lottie React, React Icons, SwiperJS, SweetAlert2, TanStack query, Express, MongoDB, Cors, Stripe, Dotenv, Jsonwebtoken, vercel, Imgbb.
+Tailwind CSS, DaisyUi, React, React Router DOM, Axios, Firebase, React Hook Form, StripeJS, Lottie React, React icons, SwiperJS, SweetAlert2, React awesome reveals, TanStack query, Express, MongoDB, Cors, Dotenv, Jsonwebtoken, vercel, ImgBB.
 
 ## Live Site Link
 
